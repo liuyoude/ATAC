@@ -132,6 +132,7 @@ dmypy.json
 .idea
 runs
 evaluator
+tsne.py
 *.yaml
 *.py
 
