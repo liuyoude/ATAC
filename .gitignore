@@ -131,8 +131,4 @@ dmypy.json
 # my
 .idea
 runs
-evaluator
-tsne.py
-*.yaml
-*.py
 

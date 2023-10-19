@@ -1,4 +1,9 @@
 # ATAC
-（Submit to Interspeech 2023）ATAC for unsupervised Anomalous Sound Detection (ASD)
+ATAC (Audio Transformation-based Auxiliary Classification) for unsupervised Anomalous Sound Detection (ASD)
 
-## The source code coming soon...
+## Structure
+![](method_1.png)
+![](method_2.png)
+
+## Performance with methods without using machine ID
+![](performance.png)

@@ -1,0 +1,91 @@
+version: ATAC
+test_version: ATAC
+description: audio transformation-based  auxiliary classification
+time_version: False # if set ture, add time information in version
+save_version_files: Flase # if set true, save each version files in runs
+save_version_file_patterns:
+  - "*.py"
+  - "*.yaml"
+pass_dirs:
+  - '.'
+  - '_'
+  - 'runs'
+  - 'results'
+  - 'evaluator'
+  - 'tsne'
+
+# filepath
+train_dirs:
+  - ../../data/dataset/fan/train
+  - ../../data/dataset/pump/train
+  - ../../data/dataset/slider/train
+  - ../../data/dataset/ToyCar/train
+  - ../../data/dataset/ToyConveyor/train
+  - ../../data/dataset/valve/train
+add_dirs:
+  - ../../data/eval_dataset/fan/train
+  - ../../data/eval_dataset/pump/train
+  - ../../data/eval_dataset/slider/train
+  - ../../data/eval_dataset/ToyCar/train
+  - ../../data/eval_dataset/ToyConveyor/train
+  - ../../data/eval_dataset/valve/train
+valid_dirs:
+  - ../../data/dataset/fan/test
+  - ../../data/dataset/pump/test
+  - ../../data/dataset/slider/test
+  - ../../data/dataset/ToyCar/test
+  - ../../data/dataset/ToyConveyor/test
+  - ../../data/dataset/valve/test
+test_dirs:
+  - ../../data/eval_dataset/fan/test
+  - ../../data/eval_dataset/pump/test
+  - ../../data/eval_dataset/slider/test
+  - ../../data/eval_dataset/ToyCar/test
+  - ../../data/eval_dataset/ToyConveyor/test
+  - ../../data/eval_dataset/valve/test
+
+# audio preprocess
+sr: 16000
+n_fft: 1024
+n_mels: 128
+win_length: 1024
+hop_length: 512
+power: 2.0
+secs: 10
+win_secs: 10
+hop_secs: 1
+
+# train
+random_seed: 526 # 41
+random_t_seed: 526
+t_factor: 100
+epochs: 300
+batch_size: 80 # 48
+num_workers: 24
+lr: 1e-4
+device_ids:
+  - 0
+valid_every_epochs: 5
+early_stop_epochs: -1
+start_scheduler_epoch: 20
+start_valid_epoch: 0
+start_save_model_epochs: 300
+save_model_interval_epochs: 1
+# loss
+arcface: True
+m:
+  ToyCar: 1.0
+  ToyConveyor: 0.7
+  fan: 0.5
+  pump: 0.7
+  slider: 0.7
+  valve: 0.7 # yuan ben shi 0.5
+s: 30
+sub: 1
+# metric
+max_fpr: 0.1
+# anomaly score
+dirichlet_score: False
+
+# test
+load_epoch: False # it will test your model if set a value, e.g. best, 10, 100
